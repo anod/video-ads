@@ -240,7 +240,7 @@ class Api
         $remote->settings[] = $geoTargetTypeSetting;
 
         // Create operation.
-        $operation = new \CampaignOperation($campaign, 'ADD');
+        $operation = new \CampaignOperation($remote, 'ADD');
 
         // Make the mutate request.
         $result = $campaignService->mutate([$operation]);
@@ -340,9 +340,9 @@ class Api
             // Display images.
             if (isset($page->entries)) {
                 foreach ($page->entries as $mediaEntry) {
+                    $urls = $mediaEntry->urls ? \MapUtils::GetMap($mediaEntry->urls) : [];
                     if ($mediaEntry->MediaType == 'Image') {
                         $dimensions = \MapUtils::GetMap($mediaEntry->dimensions);
-                        $urls = \MapUtils::GetMap($mediaEntry->urls);
                         $media[] = new Media\Image($mediaEntry->mediaId, $mediaEntry->name, $urls, $mediaEntry->sourceUrl, $mediaEntry->mimeType, $dimensions);
                     } else if ($mediaEntry->MediaType == 'Video') {
                         $media[] = new Media\Video($mediaEntry->mediaId, $mediaEntry->name, $urls, $mediaEntry->sourceUrl);
