@@ -1,0 +1,10 @@
+
+<li>Ad Group: #{{ adGroup.id }} - "{{ adGroup.name }}" (<a href="{{ url('adwords_ad_add', {'campaignId' : campaign.id, 'adGroupId' : adGroup.id }) }}" >Add an Ad</a>)
+    <ul>
+        {% if adGroup.ads | length > 0 %}
+            {% for ad in adGroup.ads %}<li>#{{ ad.id }} "{{ ad.name }}"</li>{% endfor %}
+        {% else %}
+            <li>No ads in the group</li>
+        {% endif %}
+    </ul>
+</li>

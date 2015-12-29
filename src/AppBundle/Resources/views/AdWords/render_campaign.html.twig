@@ -1,0 +1,11 @@
+
+#{{ campaign.id }} - "{{ campaign.name }}" (<a href="{{ url('adwords_adgroup_add', {'campaignId' : campaign.id }) }}" >Add a group</a>)
+    <ul>
+{% if campaign.adGroups | length > 0 %}
+    {% for adGroup in campaign.adGroups %}
+        {{ include('@App/AdWords/render_adgroup.html.twig', { 'adGroup': adGroup }) }}
+    {% endfor %}
+{% else %}
+    No ad groups found
+{% endif %}
+    </ul>

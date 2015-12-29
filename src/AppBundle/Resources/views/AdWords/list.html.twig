@@ -1,0 +1,54 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:AdWords:list{% endblock %}
+
+{% block stylesheets %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2>Ads for account: {{ config.getClientCustomerId() }}</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">Campaigns</div>
+            <ul class="list-group">
+                {% if campaigns | length > 0 %}
+                    {% for campaign in campaigns %}
+                        <li class="list-group-item">{{ include('@App/AdWords/render_campaign.html.twig', { 'campaign': campaign }) }}</li>
+                    {% endfor %}
+                {% else %}
+                    No campaigns found
+                {% endif %}
+            </ul>
+        </div>
+
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        {{ form_start(form) }}
+        <h2>Add new campaign</h2>
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+        <h2>Media: </h2>
+        <ul>
+            {% if media | length > 0 %}
+                {% for m in media %}
+                    <li>{{ m.type }}: #{{ m.mediaId }} - "{{ m.name }}" Urls: {{ m.urls|join }}</li>{% endfor %}
+            {% else %}
+                No available videos were found
+            {% endif %}
+        </ul>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+{% endblock %}
