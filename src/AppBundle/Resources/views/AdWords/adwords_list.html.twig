@@ -19,7 +19,7 @@
             <ul class="list-group">
                 {% if campaigns | length > 0 %}
                     {% for campaign in campaigns %}
-                        <li class="list-group-item">{{ include('@App/AdWords/render_campaign.html.twig', { 'campaign': campaign }) }}</li>
+                        <li class="list-group-item">{{ include('@App/AdWords/adwords_render_campaign.html.twig', { 'campaign': campaign }) }}</li>
                     {% endfor %}
                 {% else %}
                     No campaigns found

@@ -52,7 +52,7 @@ class AdWordsController extends Controller
         $campaigns = $api->loadCampaigns();
         $media = $api->loadMedia();
 
-        return $this->render('AppBundle:AdWords:list.html.twig', array(
+        return $this->render('AppBundle:AdWords:adwords_list.html.twig', array(
             'campaigns' => $campaigns,
             'media' => $media,
             'config' => $api->getConfig(),
@@ -116,7 +116,7 @@ class AdWordsController extends Controller
             return $this->redirectToRoute("adwords_overview");
         }
 
-        return $this->render('AppBundle:AdWords:add.html.twig', array(
+        return $this->render('AppBundle:AdWords:adwords_add.html.twig', array(
             'form' => $form->createView()
         ));
     }

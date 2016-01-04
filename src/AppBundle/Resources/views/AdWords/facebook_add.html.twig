@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Facebook:add{% endblock %}
+
+{% block stylesheets %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    {% if newAdUrl %}
+        <div class="alert alert-success" role="alert">New ad created: <a href="{{ newAdUrl }}">{{ newAdId }}</a></div>
+    {% endif %}
+
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form) }}
+    <h2>Add new ad</h2>
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <h1>SDK Login for App {{ appId }}</h1>
+
+    <a href="{{ loginUrl }}">Login with Facebook</a>
+
+</div>
+{% endblock %}

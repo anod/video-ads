@@ -3,7 +3,7 @@
     <ul>
 {% if campaign.adGroups | length > 0 %}
     {% for adGroup in campaign.adGroups %}
-        {{ include('@App/AdWords/render_adgroup.html.twig', { 'adGroup': adGroup }) }}
+        {{ include('@App/AdWords/adwords_render_adgroup.html.twig', { 'adGroup': adGroup }) }}
     {% endfor %}
 {% else %}
     No ad groups found
