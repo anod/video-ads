@@ -188,6 +188,9 @@ class Api
     }
 
     public function addCampaign(Campaign $campaign) {
+        /**
+         * @see https://developers.google.com/adwords/api/docs/reference/v201509/CampaignService.Campaign
+         */
         $this->init();
 
         $budgetId = $this->addBudget();
@@ -250,6 +253,9 @@ class Api
     }
 
     public function addAdGroup($campaignId) {
+        /**
+         * @see https://developers.google.com/adwords/api/docs/reference/v201509/AdGroupService.AdGroup
+         */
         $this->init();
 
         /* @var $adGroupService \AdGroupService */
@@ -360,6 +366,9 @@ class Api
     }
 
     public function addTemplateAd($adGroupId, Ad\TemplateAd $ad, $status = 'PAUSED') {
+        /**
+         * @see https://developers.google.com/adwords/api/docs/reference/v201509/AdGroupAdService.AdGroupAd
+         */
         $this->init();
 
         $fields = Factory::create($ad)->generate($ad, $this);
