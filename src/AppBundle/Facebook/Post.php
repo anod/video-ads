@@ -11,10 +11,12 @@ namespace AppBundle\Facebook;
 class Post
 {
     private $id;
-    private $title;
+    private $name;
     private $picture;
     private $source;
     private $published = 0;
+    private $createTime;
+
     private $callToAction = [
         'type' => 'BOOK_TRAVEL',
         'value' => ['link' => 'http://example.com']
@@ -39,17 +41,17 @@ class Post
     /**
      * @return mixed
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
+        return $this->name;
     }
 
     /**
-     * @param mixed $title
+     * @param mixed $name
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->title = $title;
+        $this->name = $name;
     }
 
     /**

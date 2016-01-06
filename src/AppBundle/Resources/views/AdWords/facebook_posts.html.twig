@@ -1,0 +1,39 @@
+{% extends "@App/AdWords/base.html.twig" %}
+
+{% block title %}AppBundle:Facebook:posts{% endblock %}
+
+{% block container %}
+
+    <h1>Posts</h1>
+    <table class="table table-striped">
+        {% for post in posts %}
+            {% set ids = post.id|split('_') %}
+            {% set currentPostId = ids[1] %}
+            {% set rowClass="" %}
+            {% if postId and postId == currentPostId %}
+                {% set rowClass="success" %}
+            {% endif %}
+        <tr class="{{ rowClass }}">
+            <td>{{ currentPostId }}</td>
+            <td>{{ post.name }}</td>
+            <td><img src="{{ post.picture }}" width="100"/></td>
+            <td>{% if post.source is defined %}
+                    <video width="320" height="240" controls>
+                        <source src="{{ post.source }}">
+                        {{ post.source }}
+                    </video>
+                {% endif %}
+            </td>
+            <td>{{ post.created_time }}</td>
+            <td><a href="{{ url('fb_ad_add', {'postId' : currentPostId } ) }}">Create Ad</a></td>
+        </tr>
+       {% endfor %}
+    </table>
+
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form) }}
+    <h2>Add new post</h2>
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}

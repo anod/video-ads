@@ -47934,3 +47934,485 @@ Server: GSE
   </soap:Body>
 </soap:Envelope>
 
+[Jan 06 2016 15:20:43.000000 - INFO] POST /api/adwords/cm/v201509/CampaignService HTTP/1.1
+Host: adwords.google.com
+Connection: Keep-Alive
+User-Agent: PHP-SOAP/5.5.30, gzip
+Accept-Encoding: gzip, deflate
+Content-Encoding: gzip
+Content-Type: text/xml; charset=utf-8
+SOAPAction: ""
+Content-Length: 437
+Authorization: Bearer ya29.YQKwXEnuF2MaVFu3AWyzFMU67u_W_MYJbcseYMEi4py0ok6pWQBFjSIaPrKvJdyF6-kFuQ
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://adwords.google.com/api/adwords/cm/v201509">
+  <SOAP-ENV:Header>
+    <ns1:RequestHeader>
+      <ns1:clientCustomerId>5694212053</ns1:clientCustomerId>
+      <ns1:developerToken>EyJgOZ-Y0R8HdIC5pHolhg</ns1:developerToken>
+      <ns1:userAgent>Easytobook (AwApi-PHP/6.6.0, Common-PHP/6.6.0, PHP/5.5.30)</ns1:userAgent>
+    </ns1:RequestHeader>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <ns1:get>
+      <ns1:serviceSelector>
+        <ns1:fields>Id</ns1:fields>
+        <ns1:fields>Name</ns1:fields>
+        <ns1:ordering>
+          <ns1:field>Name</ns1:field>
+          <ns1:sortOrder>ASCENDING</ns1:sortOrder>
+        </ns1:ordering>
+        <ns1:paging>
+          <ns1:startIndex>0</ns1:startIndex>
+          <ns1:numberResults>500</ns1:numberResults>
+        </ns1:paging>
+      </ns1:serviceSelector>
+    </ns1:get>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=UTF-8
+Content-Encoding: gzip
+Date: Wed, 06 Jan 2016 13:20:43 GMT
+Expires: Wed, 06 Jan 2016 13:20:43 GMT
+Cache-Control: private, max-age=0
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Content-Length: 342
+Server: GSE
+
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ResponseHeader xmlns="https://adwords.google.com/api/adwords/cm/v201509">
+      <requestId>000528aa38a4c0d00a815b0994000737</requestId>
+      <serviceName>CampaignService</serviceName>
+      <methodName>get</methodName>
+      <operations>1</operations>
+      <responseTime>250</responseTime>
+    </ResponseHeader>
+  </soap:Header>
+  <soap:Body>
+    <getResponse xmlns="https://adwords.google.com/api/adwords/cm/v201509">
+      <rval>
+        <totalNumEntries>1</totalNumEntries>
+        <Page.Type>CampaignPage</Page.Type>
+        <entries>
+          <id>365335392</id>
+          <name>New campaign 2015-12-29 11:34:14</name>
+        </entries>
+      </rval>
+    </getResponse>
+  </soap:Body>
+</soap:Envelope>
+
+[Jan 06 2016 15:20:46.000000 - INFO] POST /api/adwords/cm/v201509/AdGroupService HTTP/1.1
+Host: adwords.google.com
+Connection: Keep-Alive
+User-Agent: PHP-SOAP/5.5.30, gzip
+Accept-Encoding: gzip, deflate
+Content-Encoding: gzip
+Content-Type: text/xml; charset=utf-8
+SOAPAction: ""
+Content-Length: 456
+Authorization: Bearer ya29.YQKwXEnuF2MaVFu3AWyzFMU67u_W_MYJbcseYMEi4py0ok6pWQBFjSIaPrKvJdyF6-kFuQ
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://adwords.google.com/api/adwords/cm/v201509">
+  <SOAP-ENV:Header>
+    <ns1:RequestHeader>
+      <ns1:clientCustomerId>5694212053</ns1:clientCustomerId>
+      <ns1:developerToken>EyJgOZ-Y0R8HdIC5pHolhg</ns1:developerToken>
+      <ns1:userAgent>Easytobook (AwApi-PHP/6.6.0, Common-PHP/6.6.0, PHP/5.5.30)</ns1:userAgent>
+    </ns1:RequestHeader>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <ns1:get>
+      <ns1:serviceSelector>
+        <ns1:fields>Id</ns1:fields>
+        <ns1:fields>Name</ns1:fields>
+        <ns1:predicates>
+          <ns1:field>CampaignId</ns1:field>
+          <ns1:operator>IN</ns1:operator>
+          <ns1:values>365335392</ns1:values>
+        </ns1:predicates>
+        <ns1:paging>
+          <ns1:startIndex>0</ns1:startIndex>
+          <ns1:numberResults>500</ns1:numberResults>
+        </ns1:paging>
+      </ns1:serviceSelector>
+    </ns1:get>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=UTF-8
+Content-Encoding: gzip
+Date: Wed, 06 Jan 2016 13:20:46 GMT
+Expires: Wed, 06 Jan 2016 13:20:46 GMT
+Cache-Control: private, max-age=0
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Content-Length: 342
+Server: GSE
+
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ResponseHeader xmlns="https://adwords.google.com/api/adwords/cm/v201509">
+      <requestId>000528aa38c8e6b90a814e94210402d2</requestId>
+      <serviceName>AdGroupService</serviceName>
+      <methodName>get</methodName>
+      <operations>1</operations>
+      <responseTime>251</responseTime>
+    </ResponseHeader>
+  </soap:Header>
+  <soap:Body>
+    <getResponse xmlns="https://adwords.google.com/api/adwords/cm/v201509">
+      <rval>
+        <totalNumEntries>1</totalNumEntries>
+        <Page.Type>AdGroupPage</Page.Type>
+        <entries>
+          <id>27129055872</id>
+          <name>Test Ad Group 568253c0b46ca</name>
+        </entries>
+      </rval>
+    </getResponse>
+  </soap:Body>
+</soap:Envelope>
+
+[Jan 06 2016 15:20:48.000000 - INFO] POST /api/adwords/cm/v201509/AdGroupAdService HTTP/1.1
+Host: adwords.google.com
+Connection: Keep-Alive
+User-Agent: PHP-SOAP/5.5.30, gzip
+Accept-Encoding: gzip, deflate
+Content-Encoding: gzip
+Content-Type: text/xml; charset=utf-8
+SOAPAction: ""
+Content-Length: 458
+Authorization: Bearer ya29.YQKwXEnuF2MaVFu3AWyzFMU67u_W_MYJbcseYMEi4py0ok6pWQBFjSIaPrKvJdyF6-kFuQ
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://adwords.google.com/api/adwords/cm/v201509">
+  <SOAP-ENV:Header>
+    <ns1:RequestHeader>
+      <ns1:clientCustomerId>5694212053</ns1:clientCustomerId>
+      <ns1:developerToken>EyJgOZ-Y0R8HdIC5pHolhg</ns1:developerToken>
+      <ns1:userAgent>Easytobook (AwApi-PHP/6.6.0, Common-PHP/6.6.0, PHP/5.5.30)</ns1:userAgent>
+    </ns1:RequestHeader>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <ns1:get>
+      <ns1:serviceSelector>
+        <ns1:fields>Id</ns1:fields>
+        <ns1:fields>Name</ns1:fields>
+        <ns1:predicates>
+          <ns1:field>AdGroupId</ns1:field>
+          <ns1:operator>IN</ns1:operator>
+          <ns1:values>27129055872</ns1:values>
+        </ns1:predicates>
+        <ns1:paging>
+          <ns1:startIndex>0</ns1:startIndex>
+          <ns1:numberResults>500</ns1:numberResults>
+        </ns1:paging>
+      </ns1:serviceSelector>
+    </ns1:get>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=UTF-8
+Content-Encoding: gzip
+Date: Wed, 06 Jan 2016 13:20:48 GMT
+Expires: Wed, 06 Jan 2016 13:20:48 GMT
+Cache-Control: private, max-age=0
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Content-Length: 1327
+Server: GSE
+
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ResponseHeader xmlns="https://adwords.google.com/api/adwords/cm/v201509">
+      <requestId>000528aa38e822d00a0df6c4cf0b4447</requestId>
+      <serviceName>AdGroupAdService</serviceName>
+      <methodName>get</methodName>
+      <operations>1</operations>
+      <responseTime>386</responseTime>
+    </ResponseHeader>
+  </soap:Header>
+  <soap:Body>
+    <getResponse xmlns="https://adwords.google.com/api/adwords/cm/v201509">
+      <rval>
+        <totalNumEntries>2</totalNumEntries>
+        <Page.Type>AdGroupAdPage</Page.Type>
+        <entries>
+          <adGroupId>27129055872</adGroupId>
+          <ad xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TemplateAd">
+            <id>88628048472</id>
+            <displayUrl>www.maorbolo.com</displayUrl>
+            <Ad.Type>TemplateAd</Ad.Type>
+            <templateId>49</templateId>
+            <templateElements>
+              <uniqueName>adData</uniqueName>
+              <fields>
+                <name>companionBanner</name>
+                <type>IMAGE</type>
+                <fieldMedia xsi:type="Image">
+                  <mediaId>1626097862</mediaId>
+                  <type>IMAGE</type>
+                  <referenceId>1149774965193572352</referenceId>
+                  <dimensions>
+                    <key>FULL</key>
+                    <value>
+                      <width>300</width>
+                      <height>60</height>
+                    </value>
+                  </dimensions>
+                  <urls>
+                    <key>FULL</key>
+                    <value>https://tpc.googlesyndication.com/simgad/5589577248426593681</value>
+                  </urls>
+                  <mimeType>IMAGE_PNG</mimeType>
+                  <sourceUrl>media://da/image?source=stock_image&amp;id_from_source=117801&amp;operation=edit</sourceUrl>
+                  <Media.Type>Image</Media.Type>
+                </fieldMedia>
+              </fields>
+              <fields>
+                <name>video</name>
+                <type>VIDEO</type>
+                <fieldMedia xsi:type="Video">
+                  <mediaId>1626832783</mediaId>
+                  <type>VIDEO</type>
+                  <referenceId>443438876152388032</referenceId>
+                  <urls>
+                    <key>VIDEO_THUMBNAIL</key>
+                    <value>https://ytimg.googleusercontent.com/vi/BidpTvSpWcA/default.jpg</value>
+                  </urls>
+                  <name>PUPPY IN A BOX! Christmas Haul &amp; Surprise Unbox...</name>
+                  <creationTime>20151229 113733 Asia/Jerusalem</creationTime>
+                  <Media.Type>Video</Media.Type>
+                  <durationMillis>743000</durationMillis>
+                  <streamingUrl>http://youtube.com/get_video?video_id=BidpTvSpWcA&amp;ts=1452086448214&amp;t=4-48ORC5j34hOZULwKOFH2-_H68&amp;gad=1</streamingUrl>
+                  <readyToPlayOnTheWeb>true</readyToPlayOnTheWeb>
+                  <industryStandardCommercialIdentifier/>
+                  <advertisingId/>
+                  <youTubeVideoIdString>BidpTvSpWcA</youTubeVideoIdString>
+                </fieldMedia>
+              </fields>
+              <fields>
+                <name>creationContext</name>
+                <type>TEXT</type>
+                <fieldText>WORKFLOW:BURDOCK,TEMPLATE_SOURCE:AD_GALLERY</fieldText>
+              </fields>
+            </templateElements>
+            <name>Display Ad created 12/29/15</name>
+            <duration>743000</duration>
+          </ad>
+          <status>ENABLED</status>
+          <approvalStatus>UNCHECKED</approvalStatus>
+          <trademarkDisapproved>false</trademarkDisapproved>
+        </entries>
+        <entries>
+          <adGroupId>27129055872</adGroupId>
+          <ad xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TemplateAd">
+            <id>88628048832</id>
+            <displayUrl>www.easytobook.com</displayUrl>
+            <Ad.Type>TemplateAd</Ad.Type>
+            <templateId>49</templateId>
+            <templateElements>
+              <uniqueName>adData</uniqueName>
+              <fields>
+                <name>video</name>
+                <type>VIDEO</type>
+                <fieldMedia xsi:type="Video">
+                  <mediaId>1626832783</mediaId>
+                  <type>VIDEO</type>
+                  <referenceId>443438876152388032</referenceId>
+                  <urls>
+                    <key>VIDEO_THUMBNAIL</key>
+                    <value>https://ytimg.googleusercontent.com/vi/BidpTvSpWcA/default.jpg</value>
+                  </urls>
+                  <name>PUPPY IN A BOX! Christmas Haul &amp; Surprise Unbox...</name>
+                  <creationTime>20151229 113733 Asia/Jerusalem</creationTime>
+                  <Media.Type>Video</Media.Type>
+                  <durationMillis>743000</durationMillis>
+                  <streamingUrl>http://youtube.com/get_video?video_id=BidpTvSpWcA&amp;ts=1452086448214&amp;t=4-48ORC5j34hOZULwKOFH2-_H68&amp;gad=1</streamingUrl>
+                  <readyToPlayOnTheWeb>true</readyToPlayOnTheWeb>
+                  <industryStandardCommercialIdentifier/>
+                  <advertisingId/>
+                  <youTubeVideoIdString>BidpTvSpWcA</youTubeVideoIdString>
+                </fieldMedia>
+              </fields>
+              <fields>
+                <name>companionBanner</name>
+                <type>IMAGE</type>
+                <fieldMedia xsi:type="Image">
+                  <mediaId>1626097862</mediaId>
+                  <type>IMAGE</type>
+                  <referenceId>1149774965193572352</referenceId>
+                  <dimensions>
+                    <key>FULL</key>
+                    <value>
+                      <width>300</width>
+                      <height>60</height>
+                    </value>
+                  </dimensions>
+                  <urls>
+                    <key>FULL</key>
+                    <value>https://tpc.googlesyndication.com/simgad/5589577248426593681</value>
+                  </urls>
+                  <mimeType>IMAGE_PNG</mimeType>
+                  <sourceUrl>media://da/image?source=stock_image&amp;id_from_source=117801&amp;operation=edit</sourceUrl>
+                  <Media.Type>Image</Media.Type>
+                </fieldMedia>
+              </fields>
+            </templateElements>
+            <name>In stream Ad 2015-12-29 11:41:20</name>
+            <duration>743000</duration>
+          </ad>
+          <status>PAUSED</status>
+          <approvalStatus>UNCHECKED</approvalStatus>
+          <trademarkDisapproved>false</trademarkDisapproved>
+        </entries>
+      </rval>
+    </getResponse>
+  </soap:Body>
+</soap:Envelope>
+
+[Jan 06 2016 15:20:50.000000 - INFO] POST /api/adwords/cm/v201509/MediaService HTTP/1.1
+Host: adwords.google.com
+Connection: Keep-Alive
+User-Agent: PHP-SOAP/5.5.30, gzip
+Accept-Encoding: gzip, deflate
+Content-Encoding: gzip
+Content-Type: text/xml; charset=utf-8
+SOAPAction: ""
+Content-Length: 524
+Authorization: Bearer ya29.YQKwXEnuF2MaVFu3AWyzFMU67u_W_MYJbcseYMEi4py0ok6pWQBFjSIaPrKvJdyF6-kFuQ
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://adwords.google.com/api/adwords/cm/v201509">
+  <SOAP-ENV:Header>
+    <ns1:RequestHeader>
+      <ns1:clientCustomerId>5694212053</ns1:clientCustomerId>
+      <ns1:developerToken>EyJgOZ-Y0R8HdIC5pHolhg</ns1:developerToken>
+      <ns1:userAgent>Easytobook (AwApi-PHP/6.6.0, Common-PHP/6.6.0, PHP/5.5.30)</ns1:userAgent>
+    </ns1:RequestHeader>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <ns1:get>
+      <ns1:serviceSelector>
+        <ns1:fields>MediaId</ns1:fields>
+        <ns1:fields>Width</ns1:fields>
+        <ns1:fields>Height</ns1:fields>
+        <ns1:fields>MimeType</ns1:fields>
+        <ns1:fields>Name</ns1:fields>
+        <ns1:fields>Urls</ns1:fields>
+        <ns1:fields>SourceUrl</ns1:fields>
+        <ns1:predicates>
+          <ns1:field>Type</ns1:field>
+          <ns1:operator>IN</ns1:operator>
+          <ns1:values>IMAGE</ns1:values>
+          <ns1:values>VIDEO</ns1:values>
+        </ns1:predicates>
+        <ns1:ordering>
+          <ns1:field>Type</ns1:field>
+          <ns1:sortOrder>ASCENDING</ns1:sortOrder>
+        </ns1:ordering>
+        <ns1:paging>
+          <ns1:startIndex>0</ns1:startIndex>
+          <ns1:numberResults>500</ns1:numberResults>
+        </ns1:paging>
+      </ns1:serviceSelector>
+    </ns1:get>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=UTF-8
+Content-Encoding: gzip
+Date: Wed, 06 Jan 2016 13:20:49 GMT
+Expires: Wed, 06 Jan 2016 13:20:49 GMT
+Cache-Control: private, max-age=0
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Content-Length: 734
+Server: GSE
+
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ResponseHeader xmlns="https://adwords.google.com/api/adwords/cm/v201509">
+      <requestId>000528aa390509400a0de085780a0140</requestId>
+      <serviceName>MediaService</serviceName>
+      <methodName>get</methodName>
+      <operations>1</operations>
+      <responseTime>76</responseTime>
+    </ResponseHeader>
+  </soap:Header>
+  <soap:Body>
+    <getResponse xmlns="https://adwords.google.com/api/adwords/cm/v201509">
+      <rval>
+        <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Image">
+          <mediaId>1626097328</mediaId>
+          <type>IMAGE</type>
+          <referenceId>8427591963024293888</referenceId>
+          <dimensions>
+            <key>FULL</key>
+            <value>
+              <width>300</width>
+              <height>250</height>
+            </value>
+          </dimensions>
+          <urls>
+            <key>FULL</key>
+            <value>https://tpc.googlesyndication.com/simgad/2205601436205314716</value>
+          </urls>
+          <mimeType>IMAGE_PNG</mimeType>
+          <sourceUrl>media://da/image?source=stock_image&amp;id_from_source=117801&amp;operation=edit</sourceUrl>
+          <name/>
+          <Media.Type>Image</Media.Type>
+        </entries>
+        <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Image">
+          <mediaId>1626097862</mediaId>
+          <type>IMAGE</type>
+          <referenceId>1149774965193572352</referenceId>
+          <dimensions>
+            <key>FULL</key>
+            <value>
+              <width>300</width>
+              <height>60</height>
+            </value>
+          </dimensions>
+          <urls>
+            <key>FULL</key>
+            <value>https://tpc.googlesyndication.com/simgad/5589577248426593681</value>
+          </urls>
+          <mimeType>IMAGE_PNG</mimeType>
+          <sourceUrl>media://da/image?source=stock_image&amp;id_from_source=117801&amp;operation=edit</sourceUrl>
+          <name/>
+          <Media.Type>Image</Media.Type>
+        </entries>
+        <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Video">
+          <mediaId>1626832783</mediaId>
+          <type>VIDEO</type>
+          <referenceId>443438876152388032</referenceId>
+          <sourceUrl/>
+          <name>PUPPY IN A BOX! Christmas Haul &amp; Surprise Unbox...</name>
+          <Media.Type>Video</Media.Type>
+          <readyToPlayOnTheWeb>false</readyToPlayOnTheWeb>
+        </entries>
+        <totalNumEntries>3</totalNumEntries>
+      </rval>
+    </getResponse>
+  </soap:Body>
+</soap:Envelope>
+

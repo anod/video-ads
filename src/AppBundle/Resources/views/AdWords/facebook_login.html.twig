@@ -1,23 +1,14 @@
-{% extends "::base.html.twig" %}
+{% extends "@App/AdWords/base.html.twig" %}
 
 {% block title %}AppBundle:Facebook:login{% endblock %}
 
-{% block stylesheets %}
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
-{% endblock %}
-
-{% block body %}
-    <div class="container">
-
+{% block container %}
         <h1>SDK Login for App {{ appId }}</h1>
 
         <a href="{{ loginUrl }}">Login with Facebook</a>
 
         <p>Dest url: {{ destUrl }}</p>
-    </div>
+
+
+        <a href="{{ url("fb_posts") }}">Back to posts</a><br/>
 {% endblock %}

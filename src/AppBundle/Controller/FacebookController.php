@@ -44,20 +44,65 @@ class FacebookController extends Controller
     const PAGE_ID = 1014874405244008;
 
     /**
-     * @Route("/add", name="fb_add")
+     * @Route("/posts", name="fb_posts")
+     * @param Request $request
+     * @return Response
      */
-    public function addAction(Request $request) {
+    public function postsAction(Request $request) {
+        $accessToken = $this->get('session')->get('facebook_access_token');
+        if (!$accessToken) {
+            return $this->redirectToRoute('fb_login');
+        }
 
+        $ad = $this->initFacebookApi($accessToken);
+        $pageAccessToken = $this->requestPageAccessToken($ad);
+
+        $posts = $ad->loadPosts($pageAccessToken);
+
+        $post = new Post();
+        $post->setName('Test Video Ad '.date('Y-m-d H:i:s'));
+        $post->setPicture('https://upload.wikimedia.org/wikipedia/commons/1/17/Westie_pups.jpg');
+
+        $form = $this->createFormBuilder($post)
+            ->add('name', TextType::class)
+            ->add('picture', UrlType::class)
+            ->add('source', FileType::class)
+            ->add('save', SubmitType::class, array('label' => 'Add Campaign'))
+            ->getForm();
+
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->uploadVideo($post);
+
+            $postId = $ad->createVideoPost($pageAccessToken, $post);
+
+            $url = $this->generateUrl('fb_posts');
+
+            return $this->redirect($url . '?postId=' . $postId);
+        }
+
+        return $this->render('AppBundle:AdWords:facebook_posts.html.twig', array(
+            'posts' => $posts,
+            'form' => $form->createView(),
+            'postId' => $request->get('postId')
+        ));
+    }
+
+    /**
+     * @Route("/login", name="fb_login")
+     * @param Request $request
+     * @return Response
+     */
+    public function loginAction(Request $request) {
         $fb = new Facebook([
             'app_id' => self::APP_ID,
             'app_secret' => self::APP_SECRET,
         ]);
 
-
         $helper = $fb->getRedirectLoginHelper();
-
-        $destUrl = $this->generateUrl('fb_add', [], UrlGeneratorInterface::ABSOLUTE_URL);
-        $loginUrl = $helper->getLoginUrl($destUrl, ['ads_management','manage_pages', 'publish_pages']);
         $access_token = $this->get('session')->get('facebook_access_token');
         if (!$access_token) {
             $access_token = (string) $helper->getAccessToken();
@@ -65,64 +110,66 @@ class FacebookController extends Controller
                 $this->get('session')->set('facebook_access_token', $access_token);
             }
         }
+        $destUrl = $this->generateUrl('fb_login', [], UrlGeneratorInterface::ABSOLUTE_URL);
+        $loginUrl = $helper->getLoginUrl($destUrl, ['ads_management','manage_pages', 'publish_pages']);
+        return $this->render('AppBundle:AdWords:facebook_login.html.twig', array(
+            'loginUrl' => $loginUrl,
+            'destUrl' => $destUrl,
+            'appId' => self::APP_ID
+        ));
+    }
 
 
-        if ($access_token) {
-            $fbApi = FacebookAds\Api::init(self::APP_ID, self::APP_SECRET, $access_token);
-            $fbApi->setLogger(new FacebookLoggerWrapper($this->get('logger')));
 
-            $me = new AdUser('me');
-            $adAccount = $me->getAdAccounts()->current();
-
-            $post = new Post();
-            $post->setTitle('Test Video Ad '.date('Y-m-d H:i:s'));
-            $post->setPicture('https://upload.wikimedia.org/wikipedia/commons/1/17/Westie_pups.jpg');
-
-            $form = $this->createFormBuilder($post)
-                ->add('title', TextType::class)
-                ->add('picture', UrlType::class)
-                ->add('source', FileType::class)
-                ->add('save', SubmitType::class, array('label' => 'Add Campaign'))
-                ->getForm();
-
-
-            $form->handleRequest($request);
-
-            $newAdUrl = $newAdId = null;
-            if ($form->isSubmitted() && $form->isValid()) {
-
-                $client = $this->createHttpClient();
-                $this->uploadVideo($post);
-
-                $adAccountId = $adAccount->getData()[AdFields::ACCOUNT_ID];
-
-                $ad = new AdApi($adAccountId, self::PAGE_ID, $access_token, $client);
-                $addId = $ad->addAd($post);
-                $newAdId = $addId;
-                $newAdUrl = sprintf('https://www.facebook.com/ads/manager/ad/ads/?act=%s&pid=p2&ids=%s',
-                    $adAccountId,
-                    $newAdId
-                );
-
-            }
-
-            return $this->render('AppBundle:AdWords:facebook_add.html.twig', array(
-                'form' => $form->createView(),
-                'newAdUrl' => $newAdUrl,
-                'newAdId' => $newAdId,
-                'loginUrl' => $loginUrl,
-                'destUrl' => $destUrl,
-                'appId' => self::APP_ID
-            ));
-        } else {
-
-            return $this->render('AppBundle:AdWords:facebook_login.html.twig', array(
-                'loginUrl' => $loginUrl,
-                'destUrl' => $destUrl,
-                'appId' => self::APP_ID
-            ));
+    /**
+     * @Route("/add/{postId}", name="fb_ad_add")
+     * @param Request $request
+     * @return Response
+     */
+    public function addAction($postId, Request $request) {
+        $accessToken = $this->get('session')->get('facebook_access_token');
+        if (!$accessToken) {
+            return $this->redirectToRoute('fb_login');
         }
 
+        $ad = $this->initFacebookApi($accessToken);
+        $addId = $ad->addAd($postId);
+        $newAdId = $addId;
+        $newAdUrl = sprintf('https://www.facebook.com/ads/manager/ad/ads/?act=%s&pid=p2&ids=%s',
+            $ad->getAdAccountId(),
+            $newAdId
+        );
+
+        return $this->render('AppBundle:AdWords:facebook_add.html.twig', array(
+            'newAdUrl' => $newAdUrl,
+            'newAdId' => $newAdId
+        ));
+
+
+    }
+
+    private function requestPageAccessToken(AdApi $ad) {
+        $pageAccessToken = $this->get('session')->get('facebook_page_access_token');
+        if (!$pageAccessToken) {
+            $pageAccessToken = (string) $ad->requestPageAccessToken();
+            if ($pageAccessToken) {
+                $this->get('session')->set('facebook_page_access_token', $pageAccessToken);
+            }
+        }
+        return $pageAccessToken;
+    }
+
+    private function initFacebookApi($accessToken) {
+        $fbApi = FacebookAds\Api::init(self::APP_ID, self::APP_SECRET, $accessToken);
+        $fbApi->setLogger(new FacebookLoggerWrapper($this->get('logger')));
+
+
+        $me = new AdUser('me');
+        $adAccount = $me->getAdAccounts()->current();
+        $adAccountId = $adAccount->getData()[AdFields::ACCOUNT_ID];
+
+        $client = $this->createHttpClient();
+        return new AdApi($adAccountId, self::PAGE_ID, $accessToken, $client);
     }
 
     private function createHttpClient() {
