@@ -39,9 +39,9 @@ use GuzzleHttp\Client;
  */
 class FacebookController extends Controller
 {
-    const APP_ID = '968249236580526';
-    const APP_SECRET = '1dcf4aa2c735fa96f4ba191db7f64efa';
-    const PAGE_ID = 1014874405244008;
+    const APP_ID = '169998873081493';
+    const APP_SECRET = '419e495b6a7d52e16a96cae38f3d4ce8';
+    const PAGE_ID = 118515918521745;
 
     /**
      * @Route("/posts", name="fb_posts")
