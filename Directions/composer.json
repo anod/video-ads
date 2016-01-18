@@ -1,0 +1,13 @@
+{
+    "name": "example/map-directions",
+    "require": {
+        "guzzlehttp/guzzle": "^6.1",
+        "monolog/monolog": "^1.17"
+    },
+    "authors": [
+        {
+            "name": "Alex Gavrishev",
+            "email": "alex.gavrishev@gmail.com"
+        }
+    ]
+}
