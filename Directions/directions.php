@@ -26,13 +26,13 @@ function createDirections(array $route) {
                if (stripos($type,'TRAIN') !== false) {
                   $instructions = 'Take '.$step['html_instructions'];
                } elseif (stripos($type,'BUS') !== false ) {
-                  $short_name = isset($step['transit_details']['line']['short_name']) ? ' (#'.$step['transit_details']['line']['short_name'].')' : '';
+                  $short_name = isset($step['transit_details']['line']['short_name']) && 1==2 ? ' (#'.$step['transit_details']['line']['short_name'].')' : '';
                   $instructions = 'Take '.$step['html_instructions']. $short_name;
                }
             }
          }
 
-         $descr[] = $instructions . ' for ' . $step['duration']['text'];
+         $descr[] = $instructions ;//. ' for ' . $step['duration']['text'];
       }
    }
    return $descr;
@@ -49,8 +49,8 @@ $client = new GuzzleHttp\Client([
    'base_uri' => 'https://maps.googleapis.com'
 ]);
 
-$origin = 'Park Plaza Victoria Amsterdam, Damrak 1-5, 1012 LG Amsterdam, Netherlands';
-$destination = 'Schiphol Amsterdam Airport, Evert van de Beekstraat 202, 1118 CP Schiphol, Netherlands';
+$origin = 'Ben Gurion Airport, 7015001';
+$destination = 'Dan Tel Aviv Hotel, Ha-Yarkon Street 99, Tel Aviv-Yafo';
 
 $response = $client->get('/maps/api/directions/json', [
    'query' => [
