@@ -106,7 +106,7 @@ class Api
             AdSetFields::NAME => 'My Ad Set ' . date("Y-m-d H:i:s"),
             AdSetFields::OPTIMIZATION_GOAL => OptimizationGoals::REACH,
             AdSetFields::BILLING_EVENT => BillingEvents::IMPRESSIONS,
-            AdSetFields::BID_AMOUNT => 2,
+            AdSetFields::BID_AMOUNT => 20,
             AdSetFields::DAILY_BUDGET => 1000,
             AdSetFields::CAMPAIGN_ID => $campaignId,
             AdSetFields::TARGETING => (new TargetingSpecs())->setData(array(
